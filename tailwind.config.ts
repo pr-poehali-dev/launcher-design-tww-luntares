@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,15 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Добавлены новые цвета для тематики WoW Luntares
+				luntares: {
+					gold: '#F5B642',
+					darkblue: '#0F131B',
+					blue: '#18202E',
+					mediumblue: '#1E222A',
+					lightblue: '#252A35',
+					border: '#2A2F3B'
 				}
 			},
 			borderRadius: {

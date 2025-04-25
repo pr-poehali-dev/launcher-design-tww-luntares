@@ -1,37 +1,52 @@
 
 interface ServerStatusProps {
   name: string;
-  status: 'online' | 'offline' | 'maintenance';
+  status: "online" | "maintenance" | "high" | "full";
   population: string;
   type: string;
 }
 
 const ServerStatus = ({ name, status, population, type }: ServerStatusProps) => {
-  const statusColor = {
-    online: 'bg-green-500',
-    offline: 'bg-red-500',
-    maintenance: 'bg-yellow-500'
+  const getStatusColor = () => {
+    switch (status) {
+      case "online":
+        return "bg-green-500";
+      case "maintenance":
+        return "bg-yellow-500";
+      case "high":
+        return "bg-orange-500";
+      case "full":
+        return "bg-red-500";
+      default:
+        return "bg-gray-500";
+    }
   };
-  
-  const statusText = {
-    online: 'Онлайн',
-    offline: 'Офлайн',
-    maintenance: 'Тех. работы'
+
+  const getStatusText = () => {
+    switch (status) {
+      case "online":
+        return "Онлайн";
+      case "maintenance":
+        return "Тех. работы";
+      case "high":
+        return "Высокая нагрузка";
+      case "full":
+        return "Заполнен";
+      default:
+        return "Неизвестно";
+    }
   };
 
   return (
-    <div className="py-2 px-3 rounded mb-2 hover:bg-white/5 transition-colors">
-      <div className="flex justify-between items-center">
-        <div className="flex items-center">
-          <div className={`w-2 h-2 rounded-full ${statusColor[status]} mr-2`}></div>
-          <span className="font-medium">{name}</span>
+    <div className="flex items-center justify-between p-3 border border-[#2A2F3B] rounded bg-[#252A35] hover:border-[#F5B642] transition-colors">
+      <div className="flex items-center">
+        <div className={`w-3 h-3 rounded-full ${getStatusColor()} mr-3`}></div>
+        <div>
+          <p className="font-medium">{name}</p>
+          <p className="text-xs text-gray-400">{type} • {population}</p>
         </div>
-        <span className="text-xs text-gray-400">{statusText[status]}</span>
       </div>
-      <div className="flex justify-between mt-1 text-xs text-gray-400">
-        <span>Тип: {type}</span>
-        <span>Популяция: {population}</span>
-      </div>
+      <span className="text-xs text-gray-400">{getStatusText()}</span>
     </div>
   );
 };
