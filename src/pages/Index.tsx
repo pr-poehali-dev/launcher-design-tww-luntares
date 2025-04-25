@@ -37,7 +37,7 @@ const Index = () => {
                   </Button>
                 </div>
                 
-                <Progress value={100} className="h-2 bg-gray-800" indicatorClassName="bg-[#9b87f5]" />
+                <Progress value={100} className="h-2 bg-gray-800" />
                 
                 <div className="mt-4 flex justify-between text-xs text-gray-400">
                   <span>Версия: 10.2.5</span>
